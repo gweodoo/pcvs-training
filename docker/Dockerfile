@@ -9,10 +9,10 @@ LABEL \
 	maintainer.docker = "Julien Adam <adamj@paratools.com>"
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
-	sudo \
+	sudo git procps \
 	python3 python3-pip \
 	openmpi-bin libopenmpi-dev \
-	vim nano emacs
+	build-essential vim nano emacs
 
 RUN groupadd sudo; exit 0
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
@@ -25,4 +25,6 @@ USER user
 WORKDIR /home/user
 CMD /bin/bash
 ENV PATH="/home/user/.local/bin:${PATH}"
+RUN git clone --branch devel https://github.com/cea-hpc/pcvs.git
+RUN cd pcvs && pip install -e .
 
