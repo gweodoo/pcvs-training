@@ -5,10 +5,10 @@ lulesh:
         make:
             target: ''
     run:
-        program: 'lulesh2.0'
+        program: '@SRCPATH@/lulesh2.0'
         iterate:
             n_mpi:
-                values: {op: 'powerof', of: 3}
+                values: [{op: 'powerof', of: 3}]
             n_omp:
                 values: [2, 4, 8]
 
