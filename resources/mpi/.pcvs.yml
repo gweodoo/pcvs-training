@@ -1,0 +1,7 @@
+main_mpi:
+    build:
+        files: ['test.c']
+        sources:
+            binary: "test_program"
+    run:
+        program: "test_program"

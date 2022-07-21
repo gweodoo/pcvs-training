@@ -26,5 +26,4 @@ WORKDIR /home/user
 CMD /bin/bash
 ENV PATH="/home/user/.local/bin:${PATH}"
 RUN git clone --branch devel https://github.com/cea-hpc/pcvs.git
-RUN cd pcvs && pip install -e .
 

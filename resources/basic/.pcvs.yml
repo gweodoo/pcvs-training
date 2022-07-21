@@ -1,0 +1,27 @@
+square_root:
+    tag: ["from_sources"]
+    build:
+        files: ['square_root.c']
+        ldflags: '-lm'
+    run:
+        program: "./program_built_from_yaml"
+        iterate: &iterate
+            program:
+                x:
+                    option: "-x "
+                    numeric: true
+                    values: [1000, 10000, 100000]
+                n:
+                    option: "-n "
+                    numeric: true
+                    values: [{from: 1, to: 100, of: 2,  op: "powerof"}]
+
+square_root_w_makefile:
+    tag: ['from_makefile']
+    build:
+        make:
+            target: ''
+    run:
+        program: "@SRCPATH@/myprogram"
+        iterate:
+            <<: *iterate
